@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+/* eslint-disable react/destructuring-assignment */
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Aux from '../Aux/Aux';
@@ -9,38 +10,39 @@ import classes from './Layout.module.css';
 
 class Layout extends Component {
   state = {
-    showSideDrawer: false
-  }
+    showSideDrawer: false,
+  };
 
   sideDrawerClosedHandler = () => {
     this.setState({
-      showSideDrawer: false
-    })
-  }
+      showSideDrawer: false,
+    });
+  };
 
   sideDrawerToggleHandler = () => {
     this.setState((prevState) => {
       return {
-        showSideDrawer: !prevState.showSideDrawer
-      }
-    })
-  }
+        showSideDrawer: !prevState.showSideDrawer,
+      };
+    });
+  };
 
   render() {
     return (
       <Aux>
-        <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler}/>
-        <SideDrawer open={this.state.showSideDrawer} closed={this.sideDrawerClosedHandler}/>
-        <main className={classes.Content}>
-          {this.props.children}
-        </main>
+        <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
+        <SideDrawer
+          open={this.state.showSideDrawer}
+          closed={this.sideDrawerClosedHandler}
+        />
+        <main className={classes.Content}>{this.props.children}</main>
       </Aux>
-    ); 
+    );
   }
 }
 
 Layout.propTypes = {
-  children: PropTypes.node
-}
+  children: PropTypes.node.isRequired,
+};
 
 export default Layout;
