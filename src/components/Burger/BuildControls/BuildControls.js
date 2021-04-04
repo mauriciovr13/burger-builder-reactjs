@@ -20,7 +20,7 @@ const BuildControls = ({price, ingredientAdded, ingredientRemoved, disabled, pur
         key={label} 
         label={label} 
         added={() => ingredientAdded(type)}
-        removed={() => {ingredientRemoved(type)}}
+        removed={() => ingredientRemoved(type)}
         disabled={disabled[type]}
       />
     ))}
